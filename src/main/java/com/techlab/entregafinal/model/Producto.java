@@ -53,6 +53,9 @@ public class Producto {
     }
 
     public void setPrecio(Double precio) {
+        if (precio <= 0) {
+            throw new IllegalArgumentException("El precio no puede ser 0 o negativo");
+        }
         this.precio = precio;
     }
 
