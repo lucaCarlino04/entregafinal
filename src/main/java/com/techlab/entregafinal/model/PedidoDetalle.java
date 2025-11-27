@@ -1,5 +1,7 @@
 package com.techlab.entregafinal.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,17 +29,17 @@ public class PedidoDetalle {
 
     @ManyToOne
     @JoinColumn(name="pedido_id")
+    @JsonBackReference
     private Pedido pedido;
 
     public PedidoDetalle() {}
 
-    public PedidoDetalle(Long id, Producto producto, Integer cantidad, Double precioUnitario, Pedido pedido) {
+    public PedidoDetalle(Long id, Producto producto, Integer cantidad) {
         this.id = id;
         this.producto = producto;
         this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
-        this.pedido = pedido;
-        this.subtotal = cantidad * precioUnitario;
+        this.precioUnitario = producto.getPrecio();
+        this.subtotal = cantidad * this.precioUnitario;
     }
     
     public Long getId() {
@@ -78,5 +80,5 @@ public class PedidoDetalle {
 
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
-    }   
+    }
 }

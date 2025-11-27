@@ -19,7 +19,7 @@ import com.techlab.entregafinal.service.PedidoService;
 
 @CrossOrigin(origins="*")
 @RestController
-@RequestMapping
+@RequestMapping("/pedidos")
 public class PedidoController {
     private final PedidoService pedidoService;
 
