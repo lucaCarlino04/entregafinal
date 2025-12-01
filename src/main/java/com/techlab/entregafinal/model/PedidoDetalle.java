@@ -20,13 +20,9 @@ public class PedidoDetalle {
     @ManyToOne
     @JoinColumn(name="producto_id")
     private Producto producto;
-
     private Integer cantidad;
-
     private Double precioUnitario;
-
     private Double subtotal;
-
     @ManyToOne
     @JoinColumn(name="pedido_id")
     @JsonBackReference
